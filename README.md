@@ -1,6 +1,6 @@
 ## Postman Collection
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](BURAYA_PUBLIC_URL_GELECEK)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/13842843/2sBYB1N8TC)
 
 # Trendyol Marketplace API - Full Postman Collection
 
