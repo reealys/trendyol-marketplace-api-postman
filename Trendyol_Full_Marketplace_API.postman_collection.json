@@ -1,0 +1,5056 @@
+{
+  "info": {
+    "_postman_id": "e0e4f3cc-9d2f-4e8e-8e6b-trendyol-full-2026",
+    "name": "Trendyol Marketplace API - Full Reference",
+    "description": "Trendyol API Referansından oluşturulan koleksiyon. Basic Auth: API KEY kullanıcı adı, API SECRET KEY parola olarak kullanılır. Guide/changelog sayfaları bilgilendirme amaçlıdır ve çalıştırılabilir Postman istekleri içermez.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{api_key}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{api_secret}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "sellerId",
+      "value": "123456"
+    },
+    {
+      "key": "api_key",
+      "value": ""
+    },
+    {
+      "key": "api_secret",
+      "value": ""
+    },
+    {
+      "key": "storeFrontCode",
+      "value": "TR"
+    },
+    {
+      "key": "packageId",
+      "value": "123456"
+    },
+    {
+      "key": "claimId",
+      "value": ""
+    },
+    {
+      "key": "claimItemId",
+      "value": ""
+    },
+    {
+      "key": "webhookId",
+      "value": ""
+    },
+    {
+      "key": "questionId",
+      "value": ""
+    },
+    {
+      "key": "batchRequestId",
+      "value": ""
+    },
+    {
+      "key": "contentId",
+      "value": ""
+    },
+    {
+      "key": "barcode",
+      "value": ""
+    },
+    {
+      "key": "categoryId",
+      "value": ""
+    },
+    {
+      "key": "attributeId",
+      "value": ""
+    },
+    {
+      "key": "cargoTrackingNumber",
+      "value": ""
+    },
+    {
+      "key": "countryCode",
+      "value": "TR"
+    },
+    {
+      "key": "cityCode",
+      "value": ""
+    },
+    {
+      "key": "districtCode",
+      "value": ""
+    },
+    {
+      "key": "orderNumber",
+      "value": ""
+    },
+    {
+      "key": "trackingNumber",
+      "value": ""
+    },
+    {
+      "key": "batchId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Sipariş & Kargo",
+      "description": "Sipariş paketlerini çekme, statü güncelleme (Picking/Invoiced), tedarik edememe, desi/koli bildirimi, kargo firması değiştirme, depo güncelleme, paket bölme, alternatif teslimat, manuel teslim/iade işlemleri ve kargo etiket yönetimi için kullanılan servisler.",
+      "item": [
+        {
+          "name": "getShipmentPackages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/orders?page=0&size=200&orderByField=PackageLastModifiedDate&orderByDirection=DESC",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "orders"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "200",
+                  "disabled": false
+                },
+                {
+                  "key": "orderNumber",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "orderByField",
+                  "value": "PackageLastModifiedDate",
+                  "disabled": false
+                },
+                {
+                  "key": "orderByDirection",
+                  "value": "DESC",
+                  "disabled": false
+                },
+                {
+                  "key": "shipmentPackageIds",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Müşteriler tarafından verilen her sipariş hakkındaki sipariş paketlerini çekebilirsiniz."
+          },
+          "response": []
+        },
+        {
+          "name": "getShipmentPackagesStream",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/orders/stream?size=50",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "orders",
+                "stream"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "50",
+                  "disabled": false
+                },
+                {
+                  "key": "nextCursor",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "packageItemStatuses",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "lastModifiedStartDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "lastModifiedEndDate",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Müşteriler tarafından verilen sipariş paketlerini cursor tabanlı sayfalama kullanarak çekebilirsiniz. Bu yöntem, sayfa numarası tabanlı sayfalamaya kıyasla daha verimli ve güvenilir bir sipariş paketi çekme deneyimi sunar. Veriler sabit bir sıralama ile döner: lastModifiedDate yeniden eskiye (DESC)."
+          },
+          "response": []
+        },
+        {
+          "name": "updatePackage - status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}"
+              ]
+            },
+            "description": "Siparişlerin paketlerini Picking veya Invoiced statüsüne güncelleyebilirsiniz.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lines\": [\n    {\n      \"lineId\": 0,\n      \"quantity\": 1\n    }\n  ],\n  \"status\": \"Picking\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updatePackage - unsupplied",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/items/unsupplied",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "items",
+                "unsupplied"
+              ]
+            },
+            "description": "Sipariş Paketindeki bir veya daha fazla ürünü iptal etmek (tedarik edememe) için bu metodu kullanabilirsiniz.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lines\": [\n    {\n      \"reasonId\": 500\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateBoxInfo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/box-info",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "box-info"
+              ]
+            },
+            "description": "Bu servis ile UPS Kargo ve CEVA Lojistik firmalarının sipariş paketleriniz için desi ve koli miktarını besleyebilirsiniz.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deci\": 1.4,\n  \"boxQuantity\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deliveredByService",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/delivered-by-service",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "delivered-by-service"
+              ]
+            },
+            "description": "Ürünlerini yetkili servise gönderen satıcılarımızın bu servisi çağırması gerekmektedir."
+          },
+          "response": []
+        },
+        {
+          "name": "changeCargoProvider",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/cargo-providers",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "cargo-providers"
+              ]
+            },
+            "description": "Paket kargo firmasını değiştirmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "updateWarehouse",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/warehouse",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "warehouse"
+              ]
+            },
+            "description": "Depo bilgisini güncellemek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"warehouseId\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "agreedDeliveryDate",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/extended-agreed-delivery-date",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "extended-agreed-delivery-date"
+              ]
+            },
+            "description": "Ek tedarik süresi (extended agreed delivery date) tanımlamak için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"extendedDayCount\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "laborCosts",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/labor-costs",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "labor-costs"
+              ]
+            },
+            "description": "İşçilik maliyeti güncellemek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "splitMultiPackageByQuantity",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/split-multi-package",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "split-multi-package"
+              ]
+            },
+            "description": "Sipariş paketlerini barkod bazlı (multi package by quantity) bölmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "splitShipmentPackage",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/split",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "split"
+              ]
+            },
+            "description": "Sipariş paketlerini bölmek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderLineIds\": [\n    0\n  ],\n  \"shouldKeepPreviousStatus\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "splitShipmentPackageByQuantity",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/split-by-quantity",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "split-by-quantity"
+              ]
+            },
+            "description": "Sipariş paketlerini birden fazla barkod ile bölmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "multiSplitShipmentPackage",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/multi-split",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "multi-split"
+              ]
+            },
+            "description": "Sipariş paketlerini birden fazla gruba bölmek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"splitGroups\": [\n    {\n      \"orderLineIds\": [\n        0\n      ]\n    }\n  ],\n  \"shouldKeepPreviousStatus\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "processAlternativeDelivery",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/alternative-delivery",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "alternative-delivery"
+              ]
+            },
+            "description": "Kargo linki ile alternatif teslimat bildirimi yapmak için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isPhoneNumber\": false,\n  \"trackingInfo\": \"http://tracking.example\",\n  \"params\": {\n    \"boxQuantity\": 1,\n    \"deci\": 1.4\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "processAlternativeDeliveryDigital",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/alternative-delivery-digital",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "alternative-delivery-digital"
+              ]
+            },
+            "description": "Dijital ürün teslimatı ile alternatif teslimat bildirimi yapmak için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isPhoneNumber\": true,\n  \"trackingInfo\": \"5555555555\",\n  \"params\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "manualDeliverByPackageId",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/manual-invoice-delivery",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "manual-invoice-delivery"
+              ]
+            },
+            "description": "Paket numarası ile manuel teslim (manual invoice delivery) bildirimi için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "manualDeliverByTrackingNumber",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/manual-invoice-delivery-by-tracking-number/{{cargoTrackingNumber}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "manual-invoice-delivery-by-tracking-number",
+                "{{cargoTrackingNumber}}"
+              ]
+            },
+            "description": "Kargo takip numarası ile manuel teslim bildirimi için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "manualReturnByTrackingNumber",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/manual-return-by-tracking-number/{{cargoTrackingNumber}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "manual-return-by-tracking-number",
+                "{{cargoTrackingNumber}}"
+              ]
+            },
+            "description": "Kargo takip numarası ile manuel iade bildirimi için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "manualReturnByPackageId",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/shipment-packages/{{packageId}}/manual-return",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "shipment-packages",
+                "{{packageId}}",
+                "manual-return"
+              ]
+            },
+            "description": "Paket numarası ile manuel iade bildirimi için kullanılır."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Adres",
+      "description": "Ülke, şehir, ilçe ve mahalle bilgilerini çekmek için kullanılan adres servisleri. Türkiye, Azerbaycan, GULF ve CEE ülkeleri için desteklenir.",
+      "item": [
+        {
+          "name": "getCountries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/member/countries",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "member",
+                "countries"
+              ]
+            },
+            "description": "Ülke bilgilerini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getCitiesByCountry",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/member/cities/{{countryCode}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "member",
+                "cities",
+                "{{countryCode}}"
+              ]
+            },
+            "description": "GULF ve CEE ülkeleri için şehir bilgisini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getDistrictsByCity",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/member/districts/{{countryCode}}/{{cityCode}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "member",
+                "districts",
+                "{{countryCode}}",
+                "{{cityCode}}"
+              ]
+            },
+            "description": "GULF ülkeleri için ilçe bilgisini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getAzerbaijanCities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/member/azerbaijan/cities",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "member",
+                "azerbaijan",
+                "cities"
+              ]
+            },
+            "description": "Azerbaycan için şehir bilgisini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getAzerbaijanDistricts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/member/azerbaijan/districts/{{cityCode}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "member",
+                "azerbaijan",
+                "districts",
+                "{{cityCode}}"
+              ]
+            },
+            "description": "Azerbaycan için ilçe bilgisini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getTurkeyCities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/member/cities",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "member",
+                "cities"
+              ]
+            },
+            "description": "Türkiye için şehir bilgisini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getTurkeyDistricts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/member/cities/{{cityCode}}/districts",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "member",
+                "cities",
+                "{{cityCode}}",
+                "districts"
+              ]
+            },
+            "description": "Türkiye için ilçe bilgisini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getTurkeyNeighborhoods",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/member/cities/{{cityCode}}/districts/{{districtCode}}/neighborhoods",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "member",
+                "cities",
+                "{{cityCode}}",
+                "districts",
+                "{{districtCode}}",
+                "neighborhoods"
+              ]
+            },
+            "description": "Türkiye için mahalle bilgisini çekmek için kullanılır."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "İade",
+      "description": "İade (claim) taleplerini çekme, oluşturma, onaylama, red talebi açma, red sebeplerini listeleme ve audit bilgilerini görüntüleme servisleri.",
+      "item": [
+        {
+          "name": "getClaims",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/claims?page=0&size=50",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "claims"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "50",
+                  "disabled": false
+                },
+                {
+                  "key": "claimItemStatus",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "orderNumber",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "claimIds",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Bu metod ile Trendyol sisteminden iade edilen siparişler hakkındaki bilgileri çekebilirsiniz."
+          },
+          "response": []
+        },
+        {
+          "name": "createClaim",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/claims/create",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "claims",
+                "create"
+              ]
+            },
+            "description": "İade talebi oluşturmak için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claimItems\": [\n    {\n      \"barcode\": \"string\",\n      \"customerNote\": \"string\",\n      \"quantity\": 1,\n      \"reasonId\": 401\n    }\n  ],\n  \"customerId\": 0,\n  \"excludeListing\": true,\n  \"forcePackageCreation\": true,\n  \"orderNumber\": \"string\",\n  \"shipmentCompanyId\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "approveClaimLineItems",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/claims/{{claimId}}/items/approve",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "claims",
+                "{{claimId}}",
+                "items",
+                "approve"
+              ]
+            },
+            "description": "İade siparişlerini (claim line items) onaylamak için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claimLineItemIdList\": [\n    \"string\"\n  ],\n  \"params\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "createClaimIssue",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/claims/{{claimId}}/issue",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "claims",
+                "{{claimId}}",
+                "issue"
+              ]
+            },
+            "description": "İade siparişlerde ret talebi (claim issue) oluşturmak için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getClaimIssueReasons",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/claims/issue-reasons",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "claims",
+                "issue-reasons"
+              ]
+            },
+            "description": "İade red sebeplerini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getClaimItemAudits",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/claims/{{claimId}}/items/{{claimItemId}}/audits",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "claims",
+                "{{claimId}}",
+                "items",
+                "{{claimItemId}}",
+                "audits"
+              ]
+            },
+            "description": "İade audit bilgilerini çekmek için kullanılır."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Test",
+      "description": "Entegrasyon testleri için test siparişi oluşturma, test sipariş statüsü güncelleme ve test iade taleplerini yönetme servisleri.",
+      "item": [
+        {
+          "name": "createTestOrder",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/orders/test",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "orders",
+                "test"
+              ]
+            },
+            "description": "Test siparişi oluşturmak için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "updateTestOrderStatus",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/orders/test/{{orderNumber}}/status",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "orders",
+                "test",
+                "{{orderNumber}}",
+                "status"
+              ]
+            },
+            "description": "Test siparişi statüsünü güncellemek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "updateTestClaimToWaitingInAction",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/order/sellers/{{sellerId}}/claims/test/{{claimId}}/waiting-in-action",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "order",
+                "sellers",
+                "{{sellerId}}",
+                "claims",
+                "test",
+                "{{claimId}}",
+                "waiting-in-action"
+              ]
+            },
+            "description": "Test iade talebini WaitingInAction statüsüne güncellemek için kullanılır."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Webhook",
+      "description": "Sipariş paketleri ile ilgili anlık bildirim almak için webhook oluşturma, listeleme, güncelleme, silme, aktif/pasif etme servisleri. CREATED, PICKING, INVOICED, SHIPPED vb. statülere abone olunabilir.",
+      "item": [
+        {
+          "name": "createWebhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/webhook/sellers/{{sellerId}}/webhooks",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "webhook",
+                "sellers",
+                "{{sellerId}}",
+                "webhooks"
+              ]
+            },
+            "description": "Webhook oluşturmak için kullanılır. Subscribed statuses ile sipariş durumlarına abone olabilirsiniz.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://example.com/webhook\",\n  \"username\": \"user\",\n  \"password\": \"password\",\n  \"authenticationType\": \"API_KEY\",\n  \"apiKey\": \"123456\",\n  \"subscribedStatuses\": [\n    \"CREATED\",\n    \"PICKING\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getWebhooks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/webhook/sellers/{{sellerId}}/webhooks",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "webhook",
+                "sellers",
+                "{{sellerId}}",
+                "webhooks"
+              ]
+            },
+            "description": "Tanımlı webhook listesini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "updateWebhook",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/webhook/sellers/{{sellerId}}/webhooks/{{webhookId}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "webhook",
+                "sellers",
+                "{{sellerId}}",
+                "webhooks",
+                "{{webhookId}}"
+              ]
+            },
+            "description": "Mevcut webhook'u güncellemek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://example.com/webhook\",\n  \"username\": \"user\",\n  \"password\": \"password\",\n  \"authenticationType\": \"API_KEY\",\n  \"apiKey\": \"123456\",\n  \"subscribedStatuses\": [\n    \"CREATED\",\n    \"PICKING\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteWebhook",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/webhook/sellers/{{sellerId}}/webhooks/{{webhookId}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "webhook",
+                "sellers",
+                "{{sellerId}}",
+                "webhooks",
+                "{{webhookId}}"
+              ]
+            },
+            "description": "Webhook silmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "activateWebhook",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/webhook/sellers/{{sellerId}}/webhooks/{{webhookId}}/activate",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "webhook",
+                "sellers",
+                "{{sellerId}}",
+                "webhooks",
+                "{{webhookId}}",
+                "activate"
+              ]
+            },
+            "description": "Webhook'u aktifleştirmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "deactivateWebhook",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/webhook/sellers/{{sellerId}}/webhooks/{{webhookId}}/deactivate",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "webhook",
+                "sellers",
+                "{{sellerId}}",
+                "webhooks",
+                "{{webhookId}}",
+                "deactivate"
+              ]
+            },
+            "description": "Webhook'u pasife almak için kullanılır."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Fatura",
+      "description": "Sipariş paketlerine fatura linki gönderme, fatura linki silme ve fatura dosyası yükleme servisleri.",
+      "item": [
+        {
+          "name": "sendInvoiceLink",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/sellers/{{sellerId}}/seller-invoice-links",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "sellers",
+                "{{sellerId}}",
+                "seller-invoice-links"
+              ]
+            },
+            "description": "Fatura linki göndermek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"invoiceLink\": \"https://example.com/invoice.pdf\",\n  \"shipmentPackageId\": 435346,\n  \"invoiceDateTime\": 1678788898,\n  \"invoiceNumber\": \"TY42024567890123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteInvoiceLink",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/sellers/{{sellerId}}/seller-invoice-links/delete",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "sellers",
+                "{{sellerId}}",
+                "seller-invoice-links",
+                "delete"
+              ]
+            },
+            "description": "Fatura linki silmek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serviceSourceId\": 88787,\n  \"channelId\": 1,\n  \"customerId\": 167878\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "uploadInvoiceFile",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/sellers/{{sellerId}}/seller-invoice-file",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "sellers",
+                "{{sellerId}}",
+                "seller-invoice-file"
+              ]
+            },
+            "description": "Fatura dosyası göndermek için kullanılır."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Satıcı",
+      "description": "Satıcıya ait iade, sevkiyat ve fatura adres bilgilerini çekme servisi.",
+      "item": [
+        {
+          "name": "getSuppliersAddresses",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/sellers/{{sellerId}}/addresses",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "sellers",
+                "{{sellerId}}",
+                "addresses"
+              ]
+            },
+            "description": "İade, sevkiyat ve fatura adres bilgilerini çekmek için kullanılır."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Ortak Etiket",
+      "description": "Ortak etiket (common label) barkod talebi oluşturma ve oluşan barkodu alma servisleri (ZPL formatı desteklenir).",
+      "item": [
+        {
+          "name": "createCommonLabel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/sellers/{{sellerId}}/common-label/{{cargoTrackingNumber}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "sellers",
+                "{{sellerId}}",
+                "common-label",
+                "{{cargoTrackingNumber}}"
+              ]
+            },
+            "description": "Ortak etiket barkod talebi oluşturmak için kullanılır (ZPL vb. format).",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"format\": \"ZPL\",\n  \"boxQuantity\": 1,\n  \"volumetricHeight\": 3.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getCommonLabel",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/sellers/{{sellerId}}/common-label/{{cargoTrackingNumber}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "sellers",
+                "{{sellerId}}",
+                "common-label",
+                "{{cargoTrackingNumber}}"
+              ]
+            },
+            "description": "Oluşan ortak etiket barkodunu almak için kullanılır."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tazmin",
+      "description": "Trendyol Express siparişlerindeki tazmin (compensation) isteklerini listeleme servisi.",
+      "item": [
+        {
+          "name": "getCompensationTickets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/tex/compensation/sellers/{{sellerId}}/tickets?page=0&size=200",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "tex",
+                "compensation",
+                "sellers",
+                "{{sellerId}}",
+                "tickets"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "200",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "Trendyol Express siparişlerindeki tazmin isteklerini çekmek için kullanılır."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Müşteri Soruları",
+      "description": "Müşteri sorularını filtreleyerek çekme, soru detayını getirme ve soruyu cevaplama servisleri.",
+      "item": [
+        {
+          "name": "getQuestionFilter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/qna/sellers/{{sellerId}}/questions/filter?page=0&size=20",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "qna",
+                "sellers",
+                "{{sellerId}}",
+                "questions",
+                "filter"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "20",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "Müşteri sorularını filtreleyerek çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getQuestion",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/qna/sellers/{{sellerId}}/questions/{{questionId}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "qna",
+                "sellers",
+                "{{sellerId}}",
+                "questions",
+                "{{questionId}}"
+              ]
+            },
+            "description": "Soru detayını getirmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "answerQuestion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/qna/sellers/{{sellerId}}/questions/{{questionId}}/answers",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "qna",
+                "sellers",
+                "{{sellerId}}",
+                "questions",
+                "{{questionId}}",
+                "answers"
+              ]
+            },
+            "description": "Müşteri sorusunu cevaplamak için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Değerli müşterimiz, sorunuz için teşekkür ederiz.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Finans",
+      "description": "Settlements (mutabakat), diğer finansal işlemler, payment order listesi ve kargo faturası detaylarını çekme servisleri.",
+      "item": [
+        {
+          "name": "getSettlements",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/finance/sellers/{{sellerId}}/settlements?page=0&size=500",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "finance",
+                "sellers",
+                "{{sellerId}}",
+                "settlements"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "500",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "Settlements (mutabakat) bilgilerini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getOtherFinancials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/finance/sellers/{{sellerId}}/other-financials?page=0&size=500",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "finance",
+                "sellers",
+                "{{sellerId}}",
+                "other-financials"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "500",
+                  "disabled": false
+                },
+                {
+                  "key": "transactionType",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "transactionSubType",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Diğer finansal işlemleri çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getPaymentOrder",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/finance/sellers/{{sellerId}}/payment-orders?page=0&size=10",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "finance",
+                "sellers",
+                "{{sellerId}}",
+                "payment-orders"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "Payment order listesini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getCargoInvoiceItems",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/finance/sellers/{{sellerId}}/cargo-invoice-items?page=0&size=500",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "finance",
+                "sellers",
+                "{{sellerId}}",
+                "cargo-invoice-items"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "500",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "Kargo faturası detaylarını çekmek için kullanılır."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Ürün V2",
+      "description": "Ürün V2 servisleri: Marka/kategori listesi, ürün oluşturma, filtreleme (onaylı/onaysız), stok-fiyat güncelleme, arşivleme, buybox kontrolü, toplu content/varyant/teslimat güncellemeleri ve batch request sonuçları. (V1 servisleri 15 Ekim 2026'da kapatılacaktır.)",
+      "item": [
+        {
+          "name": "getBrands",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/brands?page=0&size=1000",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "brands"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "1000",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "createProduct servisine yapılacak isteklerde gönderilecek brandId bilgisi bu servis kullanılarak alınır. Bir sayfada minimum 1000 adet brand bilgisi alınabilmektedir."
+          },
+          "response": []
+        },
+        {
+          "name": "getBrandsByName",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/brands/by-name?",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "brands",
+                "by-name"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "İsme göre marka aramak için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "createBrand",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/brands",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "brands"
+              ]
+            },
+            "description": "Yeni marka yaratmak için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getCategoryTree",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/product-categories?",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "product-categories"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Kategori ağacını (product categories) çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getCategoryAttributes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/categories/{{categoryId}}/attributes?",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "categories",
+                "{{categoryId}}",
+                "attributes"
+              ],
+              "query": [
+                {
+                  "key": "required",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Kategori özellik (attributes) listesini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getCategoryAttributeValues",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/categories/{{categoryId}}/attributes/{{attributeId}}/values",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "categories",
+                "{{categoryId}}",
+                "attributes",
+                "{{attributeId}}",
+                "values"
+              ]
+            },
+            "description": "Kategori özellik değerlerini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "createProducts",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/v2/products",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "v2",
+                "products"
+              ]
+            },
+            "description": "Ürün oluşturmak (Product V2) için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getProductBase",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/product/{{barcode}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "product",
+                "{{barcode}}"
+              ]
+            },
+            "description": "Ürün temel bilgilerini barkod ile çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "filterUnapprovedProducts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/unapproved?page=0&dateQueryType=CREATED_DATE&size=1000",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "unapproved"
+              ],
+              "query": [
+                {
+                  "key": "barcode",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "dateQueryType",
+                  "value": "CREATED_DATE",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "1000",
+                  "disabled": false
+                },
+                {
+                  "key": "supplierId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "stockCode",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "productMainId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "brandIds",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "nextPageToken",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Onaysız ürünleri filtreleyerek çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "filterApprovedProducts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/approved?page=0&dateQueryType=CONTENT_MODIFIED_DATE&size=100",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "approved"
+              ],
+              "query": [
+                {
+                  "key": "barcode",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "dateQueryType",
+                  "value": "CONTENT_MODIFIED_DATE",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "100",
+                  "disabled": false
+                },
+                {
+                  "key": "supplierId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "stockCode",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "productMainId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "brandIds",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "nextPageToken",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Onaylı ürünleri filtreleyerek çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "filterApprovedProductsInventoryAndPrice",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/approved/inventory-and-price?page=0&size=100&orderByDirection=desc",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "approved",
+                "inventory-and-price"
+              ],
+              "query": [
+                {
+                  "key": "barcode",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "barcodes",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "contentId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "stockCode",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "productMainId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": false
+                },
+                {
+                  "key": "size",
+                  "value": "100",
+                  "disabled": false
+                },
+                {
+                  "key": "orderByDirection",
+                  "value": "desc",
+                  "disabled": false
+                },
+                {
+                  "key": "nextPageToken",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Onaylı ürünlerin stok ve fiyat bilgilerini filtreleyerek çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "deleteProducts",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products"
+              ]
+            },
+            "description": "Ürün silmek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "archiveProducts",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/archive-state",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "archive-state"
+              ]
+            },
+            "description": "Ürün arşivlemek (archive-state) için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"barcode\": \"barkod-1234\",\n      \"archived\": true\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getBuyboxInformation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/buybox-information",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "buybox-information"
+              ]
+            },
+            "description": "Ürün buybox bilgilerini kontrol etmek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"barcodes\": [\n    \"string\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "unlockProducts",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/unlock",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "unlock"
+              ]
+            },
+            "description": "Ürün kilit kaldırmak için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateUnapprovedProducts",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/unapproved-bulk-update",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "unapproved-bulk-update"
+              ]
+            },
+            "description": "Onaysız ürünleri toplu güncellemek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateContentBulk",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/content-bulk-update",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "content-bulk-update"
+              ]
+            },
+            "description": "Onaylı ürün content bilgilerini toplu güncellemek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateVariantBulk",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/variant-bulk-update",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "variant-bulk-update"
+              ]
+            },
+            "description": "Onaylı ürün varyant bilgilerini toplu güncellemek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateDeliveryInfoBulk",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/delivery-info-bulk-update",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "delivery-info-bulk-update"
+              ]
+            },
+            "description": "Teslimat bilgilerini toplu güncellemek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getUpdateAudits",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/{{contentId}}/update-audits",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "{{contentId}}",
+                "update-audits"
+              ]
+            },
+            "description": "Ürün bilgileri güncelleme sonucunu (update audits) kontrol etmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "updatePriceAndInventory",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/inventory/sellers/{{sellerId}}/products/price-and-inventory",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "inventory",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "price-and-inventory"
+              ]
+            },
+            "description": "Stok ve fiyat güncellemek için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"barcode\": \"8680000000\",\n      \"quantity\": 100,\n      \"salePrice\": 112.85,\n      \"listPrice\": 113.85\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getBatchRequestResult",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/batch-requests/{{batchRequestId}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "batch-requests",
+                "{{batchRequestId}}"
+              ]
+            },
+            "description": "Batch request sonucunu çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getCargoProviders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/cargo-providers",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "cargo-providers"
+              ]
+            },
+            "description": "Kargo firmalarını (cargo providers) listelemek için kullanılır."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Ürün V1 (Legacy)",
+      "description": "Legacy (eski) Ürün V1 servisleri. 15 Ekim 2026 itibarıyla kullanıma kapatılacaktır. Yeni geliştirmelerde Ürün V2 servislerini kullanın.",
+      "item": [
+        {
+          "name": "createProducts V1",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products"
+              ]
+            },
+            "description": "Ürün oluşturmak (V1 Legacy) için kullanılır. V1 servisleri 15 Ekim 2026 itibarıyla kapatılacaktır."
+          },
+          "response": []
+        },
+        {
+          "name": "updateProduct V1",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products"
+              ]
+            },
+            "description": "Ürün güncellemek (V1 Legacy) için kullanılır. V1 servisleri 15 Ekim 2026 itibarıyla kapatılacaktır."
+          },
+          "response": []
+        },
+        {
+          "name": "filterProducts V1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products"
+              ]
+            },
+            "description": "Ürün filtrelemek (V1 Legacy) için kullanılır. V1 servisleri 15 Ekim 2026 itibarıyla kapatılacaktır."
+          },
+          "response": []
+        },
+        {
+          "name": "getBatchRequestResult V1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/product/sellers/{{sellerId}}/products/batch-requests/{{batchRequestId}}",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "product",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "batch-requests",
+                "{{batchRequestId}}"
+              ]
+            },
+            "description": "Batch request sonucunu çekmek (V1 Legacy) için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "updatePriceAndInventory V1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://apigw.trendyol.com/integration/inventory/sellers/{{sellerId}}/products/price-and-inventory",
+              "protocol": "https",
+              "host": [
+                "apigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "inventory",
+                "sellers",
+                "{{sellerId}}",
+                "products",
+                "price-and-inventory"
+              ]
+            },
+            "description": "Stok ve fiyat güncellemek (V1 Legacy) için kullanılır.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"barcode\": \"8680000000\",\n      \"quantity\": 100,\n      \"salePrice\": 112.85,\n      \"listPrice\": 113.85\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "İhracat Merkezi (AutoFT)",
+      "description": "İhracat Merkezi (AutoFT / ECGW) servisleri: Ürün oluşturma/listeleme, menşei-materyal-yıkama talimatı lookup'ları, stok/fiyat güncelleme, paket listeleme ve batch sonuç sorgulama. Şu an stage gateway (stageapigw.trendyol.com) üzerinden sunulmaktadır; production kullanılabilirliğini güncel dokümantasyondan doğrulayın.",
+      "item": [
+        {
+          "name": "createProductsV2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v1/{{sellerId}}/products",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v1",
+                "{{sellerId}}",
+                "products"
+              ]
+            },
+            "description": "İhracat Merkezi (AutoFT) ürün oluşturma V2. Stage gateway kullanır; production kullanılabilirliğini dokümantasyondan doğrulayın.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "listProducts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v1/{{sellerId}}/products",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v1",
+                "{{sellerId}}",
+                "products"
+              ]
+            },
+            "description": "İhracat Merkezi (AutoFT) ürün listeleme."
+          },
+          "response": []
+        },
+        {
+          "name": "getOrigins",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v1/{{sellerId}}/lookup/origins",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v1",
+                "{{sellerId}}",
+                "lookup",
+                "origins"
+              ]
+            },
+            "description": "Menşei listesini çekmek için kullanılır (AutoFT lookup)."
+          },
+          "response": []
+        },
+        {
+          "name": "getCompositions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v1/{{sellerId}}/lookup/compositions",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v1",
+                "{{sellerId}}",
+                "lookup",
+                "compositions"
+              ]
+            },
+            "description": "Materyal bileşenlerini çekmek için kullanılır (AutoFT lookup)."
+          },
+          "response": []
+        },
+        {
+          "name": "getCareInstructions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v1/{{sellerId}}/lookup/care-instructions",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v1",
+                "{{sellerId}}",
+                "lookup",
+                "care-instructions"
+              ]
+            },
+            "description": "Yıkama talimatlarını çekmek için kullanılır (AutoFT lookup)."
+          },
+          "response": []
+        },
+        {
+          "name": "getCategoryAttributes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "storeFrontCode",
+                "value": "{{storeFrontCode}}"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "tr"
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v1/{{sellerId}}/lookup/category-attributes?",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v1",
+                "{{sellerId}}",
+                "lookup",
+                "category-attributes"
+              ],
+              "query": [
+                {
+                  "key": "required",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Kategori özellik (attributes) listesini çekmek için kullanılır."
+          },
+          "response": []
+        },
+        {
+          "name": "getCategoriesByBarcodes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v1/{{sellerId}}/lookup/categories-by-barcodes",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v1",
+                "{{sellerId}}",
+                "lookup",
+                "categories-by-barcodes"
+              ]
+            },
+            "description": "Barkod ile kategori bilgisi listelemek için kullanılır (AutoFT)."
+          },
+          "response": []
+        },
+        {
+          "name": "updateStocks",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v1/{{sellerId}}/stocks",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v1",
+                "{{sellerId}}",
+                "stocks"
+              ]
+            },
+            "description": "Ürün stok bilgisini güncellemek için kullanılır (AutoFT)."
+          },
+          "response": []
+        },
+        {
+          "name": "updatePrices",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v1/{{sellerId}}/prices",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v1",
+                "{{sellerId}}",
+                "prices"
+              ]
+            },
+            "description": "Fiyat güncellemek için kullanılır (AutoFT)."
+          },
+          "response": []
+        },
+        {
+          "name": "listPackagesV2",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v2/{{sellerId}}/packages",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v2",
+                "{{sellerId}}",
+                "packages"
+              ]
+            },
+            "description": "Paket listeleme V2 (AutoFT)."
+          },
+          "response": []
+        },
+        {
+          "name": "getPackageItemsV2",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v2/{{sellerId}}/packages/{{trackingNumber}}/items",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v2",
+                "{{sellerId}}",
+                "packages",
+                "{{trackingNumber}}",
+                "items"
+              ]
+            },
+            "description": "Paket detayı V2 (AutoFT)."
+          },
+          "response": []
+        },
+        {
+          "name": "listPackagesV3",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v3/{{sellerId}}/packages",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v3",
+                "{{sellerId}}",
+                "packages"
+              ]
+            },
+            "description": "Paket listeleme V3 (AutoFT)."
+          },
+          "response": []
+        },
+        {
+          "name": "checkBatchStatus",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{api_key}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{api_secret}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://stageapigw.trendyol.com/integration/ecgw/v1/{{sellerId}}/batch/{{batchId}}",
+              "protocol": "https",
+              "host": [
+                "stageapigw.trendyol.com"
+              ],
+              "path": [
+                "integration",
+                "ecgw",
+                "v1",
+                "{{sellerId}}",
+                "batch",
+                "{{batchId}}"
+              ]
+            },
+            "description": "Batch ID ile işlem sonucunu sorgulamak için kullanılır (AutoFT)."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
