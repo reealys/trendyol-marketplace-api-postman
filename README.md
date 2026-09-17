@@ -1,3 +1,7 @@
+## Postman Collection
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](BURAYA_PUBLIC_URL_GELECEK)
+
 # Trendyol Marketplace API - Full Postman Collection
 
 Trendyol Marketplace API'nin **tam ve güncel** Postman koleksiyonu.  
