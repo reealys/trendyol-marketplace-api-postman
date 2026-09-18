@@ -1,6 +1,6 @@
 ## Postman Collection
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/13842843/2sBYB1N8TC)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/reealyss-team/my-public-workspace/collection/azyq3gb/trendyol-marketplace-api-full-reference)
 
 # Trendyol Marketplace API - Full Postman Collection
 
